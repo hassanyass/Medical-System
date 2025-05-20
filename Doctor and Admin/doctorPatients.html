@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Patients</title>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="dashboardStyle.css">
+    <link rel="stylesheet" href="patientStyle.css">
+    <script src="../assets/js/StorageManager.js"></script>
+    <script src="patientScript.js" defer></script>
+</head>
+
+<body>
+    <input type="checkbox" id="nav-toggle">
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-flex">
+                <img src="img/logo.png" width="50px" alt="logo">
+                <div class="brand-icons">
+                    <span class="las la-bell"></span>
+                    <span class="las la-user-circle"></span>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar-main">
+            <div class="sidebar-doctor">
+                <div class="doctor-profile">
+                    <img src="img/doctor.jpg" alt="doctor">
+                    <div class="doctor-info">
+                        <h2>Hassan Yassin</h2>
+                        <p>doc.hassanyassin@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-menu">
+                <div class="menu-block">
+                    <div class="menu-head">
+                        <span>Dashboard</span>
+                    </div>
+                    <ul>
+                        <li>
+                            <a href="dashboard.html">
+                                <span class="las la-tachometer-alt"></span>
+                                <span>Overview</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="doctorAppointment.html">
+                                <span class="las la-calendar-check"></span>
+                                <span>Appointments</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="doctorPatients.html" class="active">
+                                <span class="las la-user-md"></span>
+                                <span>Patients</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="doctorChat.html">
+                                <span class="las la-comments"></span>
+                                <span>Chats</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="logoutBtn">
+                                <span class="las la-sign-out-alt"></span>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <div class="menu-toggle">
+                <label for="nav-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+            </div>
+            <div class="search-wrapper">
+                <span class="las la-search"></span>
+                <input type="search" placeholder="Search patients">
+            </div>
+            <div class="header-icons">
+                <span class="las la-bookmark"></span>
+                <span class="las la-sms"></span>
+            </div>
+        </header>
+
+        <main>
+            <div class="page-header">
+                <div>
+                    <h1>Patients</h1>
+                    <small>Manage and monitor patient information</small>
+                </div>
+                <div class="header-actions">
+                    <button class="add-patient-btn">
+                        <span class="las la-plus"></span>
+                        Add New Patient
+                    </button>
+                </div>
+            </div>
+
+            <div class="patients-grid">
+                <div class="patients-section">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Patient List</h3>
+                            <div class="card-header-actions">
+                                <button class="filter-btn">
+                                    <span class="las la-filter"></span>
+                                    Filter
+                                </button>
+                                <button class="export-btn">
+                                    <span class="las la-file-export"></span>
+                                    Export
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <table class="patients-table">
+                                <thead>
+                                    <tr>
+                                        <th>Patient Info</th>
+                                        <th>Age</th>
+                                        <th>Gender</th>
+                                        <th>Blood Group</th>
+                                        <th>Medical History</th>
+                                        <th>Last Visit</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="patientTableBody">
+                                    <tr>
+                                        <td class="patient-info">
+                                            <img src="img/patient1.jpg" alt="John Smith">
+                                            <div>
+                                                <h4>John Smith</h4>
+                                                <small>ID: P-0123</small>
+                                            </div>
+                                        </td>
+                                        <td>43</td>
+                                        <td>Male</td>
+                                        <td>A+</td>
+                                        <td>Hypertension, Diabetes</td>
+                                        <td>Mar 15, 2024</td>
+                                        <td><span class="status active">Active</span></td>
+                                        <td class="actions">
+                                            <button class="action-btn view-btn" data-patient-id="P-0123">
+                                                <span class="las la-eye"></span>
+                                            </button>
+                                            <button class="action-btn edit-btn" data-patient-id="P-0123">
+                                                <span class="las la-edit"></span>
+                                            </button>
+                                            <button class="action-btn delete-btn" data-patient-id="P-0123">
+                                                <span class="las la-trash"></span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="patient-info">
+                                            <img src="img/patient2.jpg" alt="Sarah Johnson">
+                                            <div>
+                                                <h4>Sarah Johnson</h4>
+                                                <small>ID: P-0124</small>
+                                            </div>
+                                        </td>
+                                        <td>31</td>
+                                        <td>Female</td>
+                                        <td>B-</td>
+                                        <td>Asthma</td>
+                                        <td>Mar 15, 2024</td>
+                                        <td><span class="status active">Active</span></td>
+                                        <td class="actions">
+                                            <button class="action-btn view-btn" data-patient-id="P-0124">
+                                                <span class="las la-eye"></span>
+                                            </button>
+                                            <button class="action-btn edit-btn" data-patient-id="P-0124">
+                                                <span class="las la-edit"></span>
+                                            </button>
+                                            <button class="action-btn delete-btn" data-patient-id="P-0124">
+                                                <span class="las la-trash"></span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Patient Details Modal -->
+            <div id="patientModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Patient Details</h2>
+                        <span class="close-modal">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="patient-profile">
+                            <img src="" alt="Patient" id="modalPatientImage">
+                            <div class="patient-info">
+                                <h3 id="modalPatientName"></h3>
+                                <p id="modalPatientId"></p>
+                            </div>
+                        </div>
+                        <div class="patient-details-grid">
+                            <div class="detail-group">
+                                <label>Date of Birth</label>
+                                <p id="modalDateOfBirth"></p>
+                            </div>
+                            <div class="detail-group">
+                                <label>Age</label>
+                                <p id="modalAge"></p>
+                            </div>
+                            <div class="detail-group">
+                                <label>Gender</label>
+                                <p id="modalGender"></p>
+                            </div>
+                            <div class="detail-group">
+                                <label>Blood Group</label>
+                                <p id="modalBloodGroup"></p>
+                            </div>
+                            <div class="detail-group">
+                                <label>Phone</label>
+                                <p id="modalPhone"></p>
+                            </div>
+                            <div class="detail-group">
+                                <label>Email</label>
+                                <p id="modalEmail"></p>
+                            </div>
+                            <div class="detail-group full-width">
+                                <label>Address</label>
+                                <p id="modalAddress"></p>
+                            </div>
+                            <div class="detail-group full-width">
+                                <label>Medical History</label>
+                                <p id="modalMedicalHistory"></p>
+                            </div>
+                            <div class="detail-group full-width">
+                                <label>Allergies</label>
+                                <p id="modalAllergies"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add/Edit Patient Modal -->
+            <div id="newPatientModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Add New Patient</h2>
+                        <span class="close-modal">&times;</span>
+                    </div>
+                    <form id="patientForm">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="dateOfBirth">Date of Birth</label>
+                                <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="gender">Gender</label>
+                                <select id="gender" name="gender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="bloodGroup">Blood Group</label>
+                                <select id="bloodGroup" name="bloodGroup" required>
+                                    <option value="">Select Blood Group</option>
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="address">Address</label>
+                                <textarea id="address" name="address" rows="2" required></textarea>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="medicalHistory">Medical History</label>
+                                <textarea id="medicalHistory" name="medicalHistory" rows="3"></textarea>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="allergies">Allergies</label>
+                                <textarea id="allergies" name="allergies" rows="2"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <select id="status" name="status" required>
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="save-btn">Save Patient</button>
+                            <button type="button" class="cancel-btn">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Filter Modal -->
+            <div id="filterModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Filter Patients</h2>
+                        <span class="close-modal">&times;</span>
+                    </div>
+                    <form id="filterForm">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="filterGender">Gender</label>
+                                <select id="filterGender" name="gender">
+                                    <option value="">All</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="filterBloodGroup">Blood Group</label>
+                                <select id="filterBloodGroup" name="bloodGroup">
+                                    <option value="">All</option>
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="filterStatus">Status</label>
+                                <select id="filterStatus" name="status">
+                                    <option value="">All</option>
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="filterAge">Age Range</label>
+                                <div class="age-range">
+                                    <input type="number" id="filterAgeMin" name="ageMin" placeholder="Min">
+                                    <span>to</span>
+                                    <input type="number" id="filterAgeMax" name="ageMax" placeholder="Max">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="reset-btn">Reset</button>
+                            <button type="submit" class="apply-btn">Apply Filter</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        document.getElementById('logoutBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            // Clear any session data if needed
+            sessionStorage.clear();
+            localStorage.clear();
+            // Redirect to login page
+            window.location.href = '../Login Page/login.html';
+        });
+    </script>
+</body>
+</html> 

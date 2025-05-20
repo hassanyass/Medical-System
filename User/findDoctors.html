@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Doctors - Medical System</title>
+    <link rel="stylesheet" href="user.css">
+    <link rel="stylesheet" href="findDoctors.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="profile-section">
+                <div class="profile-image">
+                    <img src="default-avatar.jpg" alt="User Profile" id="userProfilePic">
+                </div>
+                <h3 id="userName">Welcome, Patient</h3>
+            </div>
+            <ul class="nav-links">
+                <li><a href="user.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li class="active"><a href="findDoctors.html"><i class="fas fa-user-md"></i> Find Doctors</a></li>
+                <li><a href="appointments.html"><i class="fas fa-calendar-check"></i> My Appointments</a></li>
+                <li><a href="chat.html"><i class="fas fa-comments"></i> Chat</a></li>
+                <li><a href="C:\Users\hassa\Desktop\Medical System\Login Page\login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Find Doctors</h1>
+                <div class="search-filters">
+                    <input type="text" placeholder="Search doctors by name">
+                    <select id="specialtyFilter">
+                        <option value="">All Specialties</option>
+                        <option value="cardiology">Cardiology</option>
+                        <option value="dermatology">Dermatology</option>
+                        <option value="neurology">Neurology</option>
+                        <option value="pediatrics">Pediatrics</option>
+                        <option value="orthopedics">Orthopedics</option>
+                    </select>
+                    <button class="search-btn">Search</button>
+                </div>
+            </div>
+
+            <div class="doctors-calendar-container">
+                <!-- Doctor List - Will be populated by JavaScript -->
+                <div class="doctors-list">
+                    <!-- Dynamic content -->
+                </div>
+
+                <!-- Calendar View -->
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <button class="prev-week"><i class="fas fa-chevron-left"></i></button>
+                        <h2>Loading calendar...</h2>
+                        <button class="next-week"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    
+                    <div class="calendar-grid">
+                        <div class="time-column">
+                            <div class="time-slot">9:00 AM</div>
+                            <div class="time-slot">10:00 AM</div>
+                            <div class="time-slot">11:00 AM</div>
+                            <div class="time-slot">12:00 PM</div>
+                            <div class="time-slot">2:00 PM</div>
+                            <div class="time-slot">3:00 PM</div>
+                            <div class="time-slot">4:00 PM</div>
+                            <div class="time-slot">5:00 PM</div>
+                        </div>
+                        
+                        <div class="days-grid">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Booking Details -->
+                <div class="booking-details">
+                    <h3>Book Appointment</h3>
+                    <div class="selected-slot">
+                        <p><i class="fas fa-calendar-alt"></i> Selected Date: <span>Select a time slot</span></p>
+                        <p><i class="fas fa-clock"></i> Selected Time: <span>Select a time slot</span></p>
+                        <p><i class="fas fa-user-md"></i> Doctor: <span>Select a doctor</span></p>
+                    </div>
+                    <form class="booking-form">
+                        <div class="form-group">
+                            <label>Reason for Visit</label>
+                            <textarea name="reason" placeholder="Brief description of your condition" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Preferred Contact Method</label>
+                            <select name="contactMethod" required>
+                                <option value="phone">Phone</option>
+                                <option value="email">Email</option>
+                                <option value="sms">SMS</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="book-btn">Book Appointment</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="findDoctors.js"></script>
+</body>
+</html> 

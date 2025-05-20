@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Chat</title>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="dashboardStyle.css">
+    <link rel="stylesheet" href="chatStyle.css">
+    <script src="chatScript.js" defer></script>
+</head>
+
+<body>
+    <input type="checkbox" id="nav-toggle">
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-flex">
+                <img src="img/logo.png" width="50px" alt="logo">
+                <div class="brand-icons">
+                    <span class="las la-bell"></span>
+                    <span class="las la-user-circle"></span>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar-main">
+            <div class="sidebar-doctor">
+                <div class="doctor-profile">
+                    <img src="img/doctor.jpg" alt="doctor">
+                    <div class="doctor-info">
+                        <h2>Hassan Yassin</h2>
+                        <p>doc.hassanyassin@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-menu">
+                <div class="menu-block">
+                    <div class="menu-head">
+                        <span>Dashboard</span>
+                    </div>
+                    <ul>
+                        <li>
+                            <a href="dashboard.html">
+                                <span class="las la-tachometer-alt"></span>
+                                <span>Overview</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="doctorAppointment.html">
+                                <span class="las la-calendar-check"></span>
+                                <span>Appointments</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="doctorPatients.html">
+                                <span class="las la-user-md"></span>
+                                <span>Patients</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="doctorChat.html" class="active">
+                                <span class="las la-comments"></span>
+                                <span>Chats</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="logoutBtn">
+                                <span class="las la-sign-out-alt"></span>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <div class="menu-toggle">
+                <label for="nav-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+            </div>
+            <div class="search-wrapper">
+                <span class="las la-search"></span>
+                <input type="search" placeholder="Search chats">
+            </div>
+            <div class="header-icons">
+                <span class="las la-bookmark"></span>
+                <span class="las la-sms"></span>
+            </div>
+        </header>
+
+        <main>
+            <div class="page-header">
+                <div>
+                    <h1>Chat Messages</h1>
+                    <small>Communicate with your patients</small>
+                </div>
+            </div>
+
+            <div class="chat-container">
+                <div class="chat-list">
+                    <div class="chat-list-header">
+                        <h2>Recent Chats</h2>
+                        <div class="chat-filters">
+                            <button class="active">All</button>
+                            <button>Unread</button>
+                            <button>Important</button>
+                        </div>
+                    </div>
+                    <div class="chat-list-content">
+                        <!-- Chat list items will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="chat-main">
+                    <div class="chat-header">
+                        <div class="chat-user-info">
+                            <img src="" alt="patient" id="activeChatUserImg">
+                            <div>
+                                <h3 id="activeChatUserName"></h3>
+                                <small id="activeChatUserStatus"></small>
+                            </div>
+                        </div>
+                        <div class="chat-actions">
+                            <button class="action-btn">
+                                <span class="las la-phone"></span>
+                            </button>
+                            <button class="action-btn">
+                                <span class="las la-video"></span>
+                            </button>
+                            <button class="action-btn">
+                                <span class="las la-ellipsis-v"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="chat-messages" id="chatMessages">
+                        <!-- Messages will be populated by JavaScript -->
+                    </div>
+
+                    <div class="chat-input">
+                        <div class="input-wrapper">
+                            <button class="attachment-btn">
+                                <span class="las la-paperclip"></span>
+                            </button>
+                            <input type="text" placeholder="Type your message..." id="messageInput">
+                            <button class="emoji-btn">
+                                <span class="las la-smile"></span>
+                            </button>
+                        </div>
+                        <button class="send-btn" id="sendMessage">
+                            <span class="las la-paper-plane"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="chat-info">
+                    <div class="patient-profile">
+                        <img src="" alt="patient" id="patientProfileImg">
+                        <h3 id="patientProfileName"></h3>
+                        <p id="patientProfileId"></p>
+                        <div class="patient-actions">
+                            <button>View Profile</button>
+                            <button>Schedule Appointment</button>
+                        </div>
+                    </div>
+                    <div class="shared-files">
+                        <h3>Shared Files</h3>
+                        <div class="files-list">
+                            <!-- Shared files will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.getElementById('logoutBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            // Clear any session data if needed
+            sessionStorage.clear();
+            localStorage.clear();
+            // Redirect to login page
+            window.location.href = '../Login Page/login.html';
+        });
+    </script>
+</body>
+</html> 

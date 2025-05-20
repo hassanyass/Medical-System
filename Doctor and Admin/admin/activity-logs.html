@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Logs - Admin Dashboard</title>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="../dashboardStyle.css">
+    <link rel="stylesheet" href="adminStyle.css">
+    <script src="logout.js" defer></script>
+</head>
+
+<body>
+    <input type="checkbox" id="nav-toggle">
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-flex">
+                <div class="brand-logo">
+                    <i class="las la-heartbeat"></i>
+                    MediCare
+                </div>
+                <div class="brand-icons">
+                    <span class="las la-bell"></span>
+                    <span class="las la-user-circle"></span>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar-main">
+            <div class="sidebar-doctor">
+                <div class="doctor-profile">
+                    <img src="../img/admin.jpg" alt="admin">
+                    <div class="doctor-info">
+                        <h2>Admin Panel</h2>
+                        <p>admin@medicalsystem.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-menu">
+                <div class="menu-block">
+                    <div class="menu-head">
+                        <span>System Management</span>
+                    </div>
+                    <ul>
+                        <li>
+                            <a href="admin.html">
+                                <span class="las la-tachometer-alt"></span>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="doctors.html">
+                                <span class="las la-user-md"></span>
+                                <span>Manage Doctors</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="messages.html">
+                                <span class="las la-comments"></span>
+                                <span>Patient Messages</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="activity-logs.html" class="active">
+                                <span class="las la-history"></span>
+                                <span>Activity Logs</span>
+                            </a>
+                        </li>
+                        <li class="logout-item">
+                            <a href="#" id="logoutBtn">
+                                <span class="las la-sign-out-alt"></span>
+                                <span>Log Out</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-content">
+        <header>
+            <div class="menu-toggle">
+                <label for="nav-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+            </div>
+            <div class="search-wrapper">
+                <span class="las la-search"></span>
+                <input type="search" placeholder="Search activities...">
+            </div>
+            <div class="header-icons">
+                <span class="las la-bookmark"></span>
+                <span class="las la-sms"></span>
+            </div>
+        </header>
+        <main>
+            <div class="page-header">
+                <div>
+                    <h1>Activity Logs</h1>
+                    <small>Monitor system activities and user interactions</small>
+                </div>
+                <div class="header-actions">
+                    <div class="filter-wrapper">
+                        <select id="activityType">
+                            <option value="all">All Activities</option>
+                            <option value="doctor">Doctor Activities</option>
+                            <option value="patient">Patient Activities</option>
+                            <option value="admin">Admin Activities</option>
+                            <option value="system">System Events</option>
+                        </select>
+                        <input type="date" id="dateFilter" class="date-filter">
+                    </div>
+                    <button class="btn-export">
+                        <span class="las la-download"></span>
+                        Export Logs
+                    </button>
+                </div>
+            </div>
+
+            <div class="activity-container">
+                <div class="activity-summary">
+                    <div class="summary-card">
+                        <div class="summary-icon doctor">
+                            <span class="las la-user-md"></span>
+                        </div>
+                        <div class="summary-info">
+                            <h3>Doctor Activities</h3>
+                            <p>45 activities today</p>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-icon patient">
+                            <span class="las la-user-injured"></span>
+                        </div>
+                        <div class="summary-info">
+                            <h3>Patient Activities</h3>
+                            <p>128 activities today</p>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-icon system">
+                            <span class="las la-server"></span>
+                        </div>
+                        <div class="summary-info">
+                            <h3>System Events</h3>
+                            <p>12 events today</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="activity-timeline">
+                    <div class="timeline-item">
+                        <div class="time">10:45 AM</div>
+                        <div class="indicator doctor"></div>
+                        <div class="content">
+                            <h4>Doctor Profile Updated</h4>
+                            <p>Dr. Hassan Yassin updated their profile information</p>
+                            <div class="meta">
+                                <span class="user">By: Dr. Hassan Yassin</span>
+                                <span class="category">Category: Profile Update</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="time">10:30 AM</div>
+                        <div class="indicator patient"></div>
+                        <div class="content">
+                            <h4>New Appointment Scheduled</h4>
+                            <p>Patient John Smith scheduled an appointment with Dr. Sarah Johnson</p>
+                            <div class="meta">
+                                <span class="user">By: John Smith</span>
+                                <span class="category">Category: Appointment</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="time">10:15 AM</div>
+                        <div class="indicator system"></div>
+                        <div class="content">
+                            <h4>System Backup Completed</h4>
+                            <p>Automated system backup completed successfully</p>
+                            <div class="meta">
+                                <span class="user">System</span>
+                                <span class="category">Category: Maintenance</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+<script src="activityLogsScript.js"></script>
+</html> 

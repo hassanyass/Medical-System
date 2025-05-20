@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="../dashboardStyle.css">
+    <script src="adminScript.js" defer></script>
+    <script src="logout.js" defer></script>
+</head>
+
+<body>
+    <input type="checkbox" id="nav-toggle">
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-flex">
+                <div class="brand-logo">
+                    <i class="las la-heartbeat"></i>
+                    MediCare
+                </div>
+                <div class="brand-icons">
+                    <span class="las la-bell"></span>
+                    <span class="las la-user-circle"></span>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar-main">
+            <div class="sidebar-doctor">
+                <div class="doctor-profile">
+                    <img src="../img/admin.jpg" alt="admin">
+                    <div class="doctor-info">
+                        <h2>Admin Panel</h2>
+                        <p>admin@medicalsystem.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-menu">
+                <div class="menu-block">
+                    <div class="menu-head">
+                        <span>System Management</span>
+                    </div>
+                    <ul>
+                        <li>
+                            <a href="admin.html" class="active">
+                                <span class="las la-tachometer-alt"></span>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="doctors.html">
+                                <span class="las la-user-md"></span>
+                                <span>Manage Doctors</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="messages.html">
+                                <span class="las la-comments"></span>
+                                <span>Patient Messages</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="activity-logs.html">
+                                <span class="las la-history"></span>
+                                <span>Activity Logs</span>
+                            </a>
+                        </li>
+                        <li class="logout-item">
+                            <a href="#" id="logoutBtn">
+                                <span class="las la-sign-out-alt"></span>
+                                <span>Log Out</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-content">
+        <header>
+            <div class="menu-toggle">
+                <label for="nav-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+            </div>
+            <div class="search-wrapper">
+                <span class="las la-search"></span>
+                <input type="search" placeholder="Search here">
+            </div>
+            <div class="header-icons">
+                <span class="las la-bookmark"></span>
+                <span class="las la-sms"></span>
+            </div>
+        </header>
+        <main>
+            <div class="page-header">
+                <div>
+                    <h1>Admin Dashboard</h1>
+                    <small>System Overview and Management</small>
+                </div>
+                <div class="button-group">
+                    <button id="addDoctorBtn">
+                        <span class="las la-user-plus"></span>
+                        Add New Doctor
+                    </button>
+                    <button>
+                        <span class="las la-tools"></span>
+                        Settings
+                    </button>
+                </div>
+            </div>
+
+            <!-- Overview Cards -->
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">
+                        <span class="las la-user-md"></span>
+                    </div>
+                    <div class="card-info">
+                        <h2>Total Doctors</h2>
+                        <h3>12</h3>
+                        <small>Active doctors in system</small>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <span class="las la-users"></span>
+                    </div>
+                    <div class="card-info">
+                        <h2>Total Patients</h2>
+                        <h3>145</h3>
+                        <small>Registered patients</small>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <span class="las la-calendar-check"></span>
+                    </div>
+                    <div class="card-info">
+                        <h2>Today's Appointments</h2>
+                        <h3>28</h3>
+                        <small>Across all doctors</small>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <span class="las la-envelope"></span>
+                    </div>
+                    <div class="card-info">
+                        <h2>New Messages</h2>
+                        <h3>15</h3>
+                        <small>Unread patient messages</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Doctor Management Section -->
+            <div class="recent-appointments">
+                <div class="section-header">
+                    <h2>Doctor Management</h2>
+                    <a href="doctors.html" class="view-all">
+                        <span class="las la-angle-right"></span>
+                        View All Doctors
+                    </a>
+                </div>
+                <div class="appointments-list">
+                    <table class="appointments-table">
+                        <thead>
+                            <tr>
+                                <th>Doctor Name</th>
+                                <th>Specialty</th>
+                                <th>Patients</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="patient-info">
+                                    <img src="../img/doctor.jpg" alt="doctor">
+                                    <div>
+                                        <h4>Dr. Hassan Yassin</h4>
+                                        <small>ID: D-0001</small>
+                                    </div>
+                                </td>
+                                <td>General Medicine</td>
+                                <td>45 patients</td>
+                                <td><span class="status confirmed">Active</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" title="View Details">
+                                            <span class="las la-eye"></span>
+                                        </button>
+                                        <button class="action-btn edit-btn" title="Edit">
+                                            <span class="las la-edit"></span>
+                                        </button>
+                                        <button class="action-btn delete-btn" title="Remove">
+                                            <span class="las la-trash"></span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="patient-info">
+                                    <img src="../img/doctor2.jpg" alt="doctor">
+                                    <div>
+                                        <h4>Dr. Sarah Johnson</h4>
+                                        <small>ID: D-0002</small>
+                                    </div>
+                                </td>
+                                <td>Pediatrics</td>
+                                <td>38 patients</td>
+                                <td><span class="status confirmed">Active</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" title="View Details">
+                                            <span class="las la-eye"></span>
+                                        </button>
+                                        <button class="action-btn edit-btn" title="Edit">
+                                            <span class="las la-edit"></span>
+                                        </button>
+                                        <button class="action-btn delete-btn" title="Remove">
+                                            <span class="las la-trash"></span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Add Doctor Modal -->
+            <div id="addDoctorModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2><span class="las la-user-md"></span> Add New Doctor</h2>
+                        <span class="close-modal">&times;</span>
+                    </div>
+                    <form id="addDoctorForm" class="modal-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="doctorName">Full Name</label>
+                                <input type="text" id="doctorName" name="name" placeholder="Enter doctor's full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="doctorEmail">Email</label>
+                                <input type="email" id="doctorEmail" name="email" placeholder="Enter doctor's email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="doctorPhone">Phone Number</label>
+                                <input type="tel" id="doctorPhone" name="phone" placeholder="Enter phone number" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="doctorSpecialty">Specialty</label>
+                                <select id="doctorSpecialty" name="specialty" required>
+                                    <option value="">Select Specialty</option>
+                                    <option value="General Medicine">General Medicine</option>
+                                    <option value="Pediatrics">Pediatrics</option>
+                                    <option value="Cardiology">Cardiology</option>
+                                    <option value="Dermatology">Dermatology</option>
+                                    <option value="Neurology">Neurology</option>
+                                    <option value="Orthopedics">Orthopedics</option>
+                                    <option value="Psychiatry">Psychiatry</option>
+                                    <option value="Ophthalmology">Ophthalmology</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-full">
+                            <div class="form-group">
+                                <label for="doctorQualifications">Qualifications</label>
+                                <textarea id="doctorQualifications" name="qualifications" rows="3" 
+                                    placeholder="Enter doctor's qualifications, certifications, and experience" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="doctorAddress">Clinic Address</label>
+                                <textarea id="doctorAddress" name="address" rows="2" 
+                                    placeholder="Enter clinic/practice address" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="doctorSchedule">Working Hours</label>
+                                <div class="schedule-grid">
+                                    <input type="time" id="startTime" name="startTime" required>
+                                    <span>to</span>
+                                    <input type="time" id="endTime" name="endTime" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="doctorImage">Profile Image</label>
+                                <div class="image-upload">
+                                    <input type="file" id="doctorImage" name="image" accept="image/*">
+                                    <img id="imagePreview" src="" alt="Preview" style="display: none;">
+                                    <label for="doctorImage" class="upload-label">
+                                        <span class="las la-cloud-upload-alt"></span>
+                                        Choose Image
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">
+                                <span class="las la-save"></span> Add Doctor
+                            </button>
+                            <button type="button" class="btn-secondary close-modal">
+                                <span class="las la-times"></span> Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html> 

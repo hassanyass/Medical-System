@@ -1,0 +1,381 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --accent-color: #176B87;
+    --base-color: white;
+    --text-color: #04364A;
+    --input-color: #F1EFEC;
+    --success-color: #4CAF50;
+    --warning-color: #ff9800;
+    --danger-color: #f44336;
+    --info-color: #2196F3;
+    --border-radius: 8px;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 300ms ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    width: 100%;
+    background: var(--base-color);
+    position: relative;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 280px;
+    background-color: var(--accent-color);
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    height: 100vh;
+    color: var(--base-color);
+}
+
+.profile-section {
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--base-color);
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nav-links {
+    list-style: none;
+    margin-top: 30px;
+}
+
+.nav-links li {
+    margin-bottom: 10px;
+}
+
+.nav-links a {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    color: var(--base-color);
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.nav-links a i {
+    margin-right: 10px;
+    width: 20px;
+    font-size: 1.3rem;
+}
+
+.nav-links li.active a,
+.nav-links a:hover {
+    background: var(--base-color);
+    color: var(--accent-color);
+}
+
+/* Main Content Styles */
+.main-content {
+    flex: 1;
+    margin-left: 280px;
+    padding: 30px;
+    background: var(--input-color);
+    min-height: 100vh;
+}
+
+.section {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.section.active {
+    display: block;
+}
+
+/* Dashboard Cards */
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 30px 0;
+}
+
+.action-card {
+    background: var(--base-color);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.action-card:hover {
+    transform: translateY(-5px);
+}
+
+.action-card i {
+    font-size: 2.5em;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(23, 107, 135, 0.1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Appointments Styles */
+.appointments-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tab {
+    padding: 10px 20px;
+    border: none;
+    background: var(--base-color);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--text-color);
+}
+
+.tab.active {
+    background: var(--accent-color);
+    color: var(--base-color);
+}
+
+.appointments-list {
+    background: var(--base-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--card-shadow);
+}
+
+/* Doctors Grid */
+.search-filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    background: var(--base-color);
+    padding: 15px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+}
+
+.search-filters input,
+.search-filters select {
+    padding: 10px;
+    border: 1px solid var(--input-color);
+    border-radius: var(--border-radius);
+    flex: 1;
+    outline: none;
+    transition: var(--transition);
+}
+
+.search-filters input:focus,
+.search-filters select:focus {
+    border-color: var(--accent-color);
+}
+
+.search-btn {
+    padding: 10px 20px;
+    background: var(--accent-color);
+    color: var(--base-color);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.search-btn:hover {
+    background: #125670;
+}
+
+.doctors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Chat Styles */
+.chat-container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    background: var(--base-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    height: 70vh;
+    box-shadow: var(--card-shadow);
+}
+
+.chat-list {
+    border-right: 1px solid var(--input-color);
+    overflow-y: auto;
+    background: var(--base-color);
+}
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    background: var(--base-color);
+}
+
+.messages-container {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.message-input {
+    display: flex;
+    padding: 15px;
+    border-top: 1px solid var(--input-color);
+    background: var(--base-color);
+}
+
+.message-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--input-color);
+    border-radius: var(--border-radius);
+    margin-right: 10px;
+    outline: none;
+    transition: var(--transition);
+}
+
+.message-input input:focus {
+    border-color: var(--accent-color);
+}
+
+.message-input button {
+    padding: 10px 20px;
+    background: var(--accent-color);
+    color: var(--base-color);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.message-input button:hover {
+    background: #125670;
+}
+
+/* Profile Styles */
+.profile-container {
+    background: var(--base-color);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: var(--card-shadow);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--input-color);
+    border-radius: var(--border-radius);
+    outline: none;
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--accent-color);
+}
+
+.save-btn {
+    background: var(--accent-color);
+    color: var(--base-color);
+    padding: 12px 25px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 16px;
+    transition: var(--transition);
+}
+
+.save-btn:hover {
+    background: #125670;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 220px;
+    }
+    .main-content {
+        margin-left: 220px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    .main-content {
+        margin-left: 0;
+    }
+    .chat-container {
+        grid-template-columns: 1fr;
+    }
+    .quick-actions {
+        grid-template-columns: 1fr;
+    }
+    .search-filters {
+        flex-direction: column;
+    }
+} 

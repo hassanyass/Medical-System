@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat - Medical System</title>
+    <link rel="stylesheet" href="user.css">
+    <link rel="stylesheet" href="chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="profile-section">
+                <div class="profile-image">
+                    <img src="default-avatar.jpg" alt="User Profile" id="userProfilePic">
+                </div>
+                <h3 id="userName">Welcome, Patient</h3>
+            </div>
+            <ul class="nav-links">
+                <li><a href="user.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="findDoctors.html"><i class="fas fa-user-md"></i> Find Doctors</a></li>
+                <li><a href="appointments.html"><i class="fas fa-calendar-check"></i> My Appointments</a></li>
+                <li class="active"><a href="chat.html"><i class="fas fa-comments"></i> Chat</a></li>
+                <li><a href="C:\Users\hassa\Desktop\Medical System\Login Page\login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Messages</h1>
+                <div class="chat-actions">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchChat" placeholder="Search conversations...">
+                    </div>
+                    <button class="new-message-btn"><i class="fas fa-plus"></i> New Message</button>
+                </div>
+            </div>
+
+            <div class="chat-container">
+                <!-- Conversations List -->
+                <div class="conversations-sidebar">
+                    <div class="conversation-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="unread">Unread</button>
+                        <button class="filter-btn" data-filter="doctors">Doctors</button>
+                        <button class="filter-btn" data-filter="staff">Staff</button>
+                    </div>
+                    <div class="conversations-list">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Chat Area -->
+                <div class="chat-area">
+                    <div class="chat-header">
+                        <div class="chat-user">
+                            <img src="img/doctor1.jpg" alt="Dr. John Smith">
+                            <div>
+                                <h3>Dr. John Smith</h3>
+                                <span class="status online">Online</span>
+                            </div>
+                        </div>
+                        <div class="chat-actions">
+                            <button class="action-btn"><i class="fas fa-phone-alt"></i></button>
+                            <button class="action-btn"><i class="fas fa-video"></i></button>
+                            <button class="action-btn"><i class="fas fa-ellipsis-v"></i></button>
+                        </div>
+                    </div>
+                    <div class="messages-container">
+                        <!-- Messages will be populated by JavaScript -->
+                        <div class="no-conversation-selected">
+                            <div class="empty-state">
+                                <i class="fas fa-comments"></i>
+                                <h3>Select a conversation</h3>
+                                <p>Choose a conversation from the list or start a new one</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="message-input-container">
+                        <button class="attachment-btn"><i class="fas fa-paperclip"></i></button>
+                        <input type="text" id="messageInput" placeholder="Type a message...">
+                        <button class="send-btn"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- New Message Modal -->
+            <div class="modal" id="newMessageModal">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h2>New Message</h2>
+                    <div class="search-recipient">
+                        <input type="text" placeholder="Search for doctors...">
+                        <div class="recipient-results">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    <div class="selected-recipients">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                    <div class="modal-actions">
+                        <button class="cancel-btn">Cancel</button>
+                        <button class="start-chat-btn">Start Chat</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Doctors Image Section -->
+            <div class="doctors-image-section">
+                <h3>Doctors</h3>
+                <div class="doctors-images">
+                    <img src="img/doctor1.jpg" alt="Doctor 1" class="doctor-image">
+                    <img src="img/doctor2.jpg" alt="Doctor 2" class="doctor-image">
+                    <img src="img/doctor3.jpg" alt="Doctor 3" class="doctor-image">
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="chat.js"></script>
+</body>
+</html> 

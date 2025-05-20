@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Messages - Admin Dashboard</title>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="../dashboardStyle.css">
+    <link rel="stylesheet" href="adminStyle.css">
+    <script src="logout.js" defer></script>
+</head>
+
+<body>
+    <input type="checkbox" id="nav-toggle">
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-flex">
+                <div class="brand-logo">
+                    <i class="las la-heartbeat"></i>
+                    MediCare
+                </div>
+                <div class="brand-icons">
+                    <span class="las la-bell"></span>
+                    <span class="las la-user-circle"></span>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar-main">
+            <div class="sidebar-doctor">
+                <div class="doctor-profile">
+                    <img src="../img/admin.jpg" alt="admin">
+                    <div class="doctor-info">
+                        <h2>Admin Panel</h2>
+                        <p>admin@medicalsystem.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-menu">
+                <div class="menu-block">
+                    <div class="menu-head">
+                        <span>System Management</span>
+                    </div>
+                    <ul>
+                        <li>
+                            <a href="admin.html">
+                                <span class="las la-tachometer-alt"></span>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="doctors.html">
+                                <span class="las la-user-md"></span>
+                                <span>Manage Doctors</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="messages.html" class="active">
+                                <span class="las la-comments"></span>
+                                <span>Patient Messages</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="activity-logs.html">
+                                <span class="las la-history"></span>
+                                <span>Activity Logs</span>
+                            </a>
+                        </li>
+                        <li class="logout-item">
+                            <a href="#" id="logoutBtn">
+                                <span class="las la-sign-out-alt"></span>
+                                <span>Log Out</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-content">
+        <header>
+            <div class="menu-toggle">
+                <label for="nav-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+            </div>
+            <div class="search-wrapper">
+                <span class="las la-search"></span>
+                <input type="search" placeholder="Search messages...">
+            </div>
+            <div class="header-icons">
+                <span class="las la-bookmark"></span>
+                <span class="las la-sms"></span>
+            </div>
+        </header>
+        <main>
+            <div class="page-header">
+                <div>
+                    <h1>Patient Messages</h1>
+                    <small>Manage and respond to patient inquiries</small>
+                </div>
+                <div class="header-actions">
+                    <div class="filter-wrapper">
+                        <select id="messageFilter">
+                            <option value="all">All Messages</option>
+                            <option value="unread">Unread</option>
+                            <option value="urgent">Urgent</option>
+                            <option value="resolved">Resolved</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="messages-container">
+                <div class="messages-list">
+                    <div class="message-item unread">
+                        <div class="message-header">
+                            <img src="../img/patient1.jpg" alt="patient">
+                            <div class="message-info">
+                                <h3>John Smith</h3>
+                                <span class="timestamp">Today, 10:30 AM</span>
+                            </div>
+                            <div class="message-status urgent">Urgent</div>
+                        </div>
+                        <div class="message-preview">
+                            Need urgent appointment with cardiologist...
+                        </div>
+                    </div>
+
+                    <div class="message-item">
+                        <div class="message-header">
+                            <img src="../img/patient2.jpg" alt="patient">
+                            <div class="message-info">
+                                <h3>Sarah Johnson</h3>
+                                <span class="timestamp">Yesterday, 3:45 PM</span>
+                            </div>
+                            <div class="message-status resolved">Resolved</div>
+                        </div>
+                        <div class="message-preview">
+                            Thank you for the quick response regarding...
+                        </div>
+                    </div>
+                </div>
+
+                <div class="message-detail">
+                    <div class="detail-header">
+                        <div class="patient-info">
+                            <img src="../img/patient1.jpg" alt="patient">
+                            <div>
+                                <h2>John Smith</h2>
+                                <p>Patient ID: P-0123</p>
+                            </div>
+                        </div>
+                        <div class="detail-actions">
+                            <button class="btn-forward" title="Forward to Doctor">
+                                <span class="las la-share"></span> Forward
+                            </button>
+                            <button class="btn-resolve" title="Mark as Resolved">
+                                <span class="las la-check"></span> Resolve
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="message-thread">
+                        <div class="message-bubble patient">
+                            <p>Need urgent appointment with cardiologist. Having chest pain since morning.</p>
+                            <span class="time">10:30 AM</span>
+                        </div>
+                        <div class="message-bubble admin">
+                            <p>I understand your concern. Let me check the availability of our cardiologists right away.</p>
+                            <span class="time">10:32 AM</span>
+                        </div>
+                    </div>
+
+                    <div class="reply-box">
+                        <textarea placeholder="Type your reply..."></textarea>
+                        <button class="btn-send">
+                            <span class="las la-paper-plane"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="messagesScript.js"></script>
+</body>
+</html> 

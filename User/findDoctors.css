@@ -1,0 +1,357 @@
+/* Doctors Calendar Container */
+.doctors-calendar-container {
+    display: grid;
+    grid-template-columns: 300px 1fr 300px;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+/* Doctors List */
+.doctors-list {
+    background: var(--base-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--card-shadow);
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
+.doctor-card {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.doctor-card:hover {
+    background: rgba(23, 107, 135, 0.05);
+}
+
+.doctor-card.selected {
+    border-color: var(--accent-color);
+    background: rgba(23, 107, 135, 0.05);
+}
+
+.doctor-card img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.doctor-info h3 {
+    margin: 0;
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
+.doctor-info .specialty {
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+.rating {
+    color: #ffc107;
+    font-size: 0.9rem;
+}
+
+.rating span {
+    color: var(--text-color);
+    margin-left: 5px;
+}
+
+/* Calendar Styles */
+.calendar-container {
+    background: var(--base-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--card-shadow);
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-header button {
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 1.1rem;
+}
+
+.calendar-header h2 {
+    color: var(--text-color);
+    font-size: 1.2rem;
+}
+
+.calendar-grid {
+    display: flex;
+    gap: 10px;
+}
+
+.time-column {
+    width: 100px;
+}
+
+.time-slot {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    padding: 10px;
+    background: rgba(23, 107, 135, 0.05);
+    margin-bottom: 5px;
+    border-radius: var(--border-radius);
+}
+
+.days-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.day-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.day-header {
+    text-align: center;
+    padding: 10px;
+    background: var(--accent-color);
+    color: var(--base-color);
+    border-radius: var(--border-radius);
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.slot {
+    height: 60px;
+    margin-bottom: 5px;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.9rem;
+}
+
+.slot.available {
+    background: rgba(76, 175, 80, 0.1);
+    color: var(--success-color);
+}
+
+.slot.available:hover {
+    background: rgba(76, 175, 80, 0.2);
+}
+
+.slot.booked {
+    background: rgba(244, 67, 54, 0.1);
+    color: var(--danger-color);
+    cursor: not-allowed;
+}
+
+.slot.break {
+    background: rgba(255, 152, 0, 0.1);
+    color: var(--warning-color);
+    cursor: not-allowed;
+}
+
+/* Booking Details */
+.booking-details {
+    background: var(--base-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--card-shadow);
+}
+
+.booking-details h3 {
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.selected-slot {
+    background: rgba(23, 107, 135, 0.05);
+    padding: 15px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+}
+
+.selected-slot p {
+    margin: 10px 0;
+    color: var(--text-color);
+}
+
+.selected-slot i {
+    color: var(--accent-color);
+    width: 20px;
+    margin-right: 10px;
+}
+
+.booking-form .form-group {
+    margin-bottom: 15px;
+}
+
+.booking-form textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.book-btn {
+    background: var(--accent-color);
+    color: var(--base-color);
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.book-btn:hover {
+    background: #125670;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .doctors-calendar-container {
+        grid-template-columns: 250px 1fr 250px;
+    }
+}
+
+@media (max-width: 992px) {
+    .doctors-calendar-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .doctors-list {
+        max-height: 300px;
+    }
+
+    .days-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .days-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .calendar-grid {
+        flex-direction: column;
+    }
+
+    .time-column {
+        display: none;
+    }
+
+    .slot {
+        height: auto;
+        padding: 15px;
+    }
+}
+
+/* Notification System */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.3s ease-out forwards;
+}
+
+.notification.success {
+    background-color: #4CAF50;
+}
+
+.notification.error {
+    background-color: #F44336;
+}
+
+.notification.fade-out {
+    animation: fadeOut 0.5s ease-in forwards;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Slot States */
+.slot.selected {
+    border: 2px solid var(--accent-color);
+    transform: scale(1.05);
+    font-weight: bold;
+    background-color: rgba(23, 107, 135, 0.2) !important;
+}
+
+.slot.past {
+    background-color: rgba(158, 158, 158, 0.1);
+    color: #9e9e9e;
+    cursor: not-allowed;
+}
+
+/* Loading Button */
+.book-btn.loading {
+    position: relative;
+    color: transparent;
+    pointer-events: none;
+}
+
+.book-btn.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+} 
