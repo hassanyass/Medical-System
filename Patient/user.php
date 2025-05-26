@@ -1,3 +1,21 @@
+<?php
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    include '../con.php';
+    if(!empty($_SESSION["user_id3"])){
+    $user_id = $_SESSION["user_id3"];
+    $select = mysqli_query($con, "SELECT * FROM `patient` WHERE patient_id = '$user_id'") or die('query failed');
+
+        if (mysqli_num_rows($select) > 0)
+        {
+            $fetch = mysqli_fetch_assoc($select);
+        }
+    }
+    else{
+    header("Location: ../login.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,14 +33,14 @@
                 <div class="profile-image">
                     <img src="default-avatar.jpg" alt="User Profile" id="userProfilePic">
                 </div>
-                <h3 id="userName">Welcome, Patient</h3>
+                <h3 id="userName"><?php echo "Welcome, ", $fetch["patient_name"] ?></h3>
             </div>
             <ul class="nav-links">
                 <li class="active"><a href="user.html"><i class="fas fa-home"></i> Dashboard</a></li>
                 <li><a href="findDoctors.html"><i class="fas fa-user-md"></i> Find Doctors</a></li>
                 <li><a href="appointments.html"><i class="fas fa-calendar-check"></i> My Appointments</a></li>
                 <li><a href="chat.html"><i class="fas fa-comments"></i> Chat</a></li>
-                <li><a href="C:\Users\hassa\Desktop\Medical System\Login Page\login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                <li><a href="../logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
             </ul>
         </nav>
 
@@ -110,6 +128,6 @@
         </main>
     </div>
 
-    <script src="user.js"></script>
+    <!-- <script src="user.js"></script> -->
 </body>
 </html> 

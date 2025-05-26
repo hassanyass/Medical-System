@@ -11,7 +11,7 @@
     <!-- Header -->
     <header>
         <nav class="nav-container">
-            <a href="index.html" class="logo">
+            <a href="index.php" class="logo">
                 <i class="las la-heartbeat"></i>
                 MediCare
             </a>
@@ -21,8 +21,8 @@
                 <a href="#about">About</a>
                 <a href="#contact">Contact</a>
                 <div class="auth-buttons">
-                    <a href="Login Page/login.html" class="btn btn-login">Login</a>
-                    <a href="Login Page/signup.html" class="btn btn-signup">Sign Up</a>
+                    <a href="login.php" class="btn btn-login">Login</a>
+                    <a href="signup.php" class="btn btn-signup">Sign Up</a>
                 </div>
             </div>
         </nav>
@@ -34,7 +34,7 @@
             <h1>Your Health, Our Priority</h1>
             <p>Experience modern healthcare management with our comprehensive medical system. Connect with doctors, manage appointments, and access your health records seamlessly.</p>
             <div class="auth-buttons">
-                <a href="Login Page/signup.html" class="btn btn-signup">Get Started</a>
+                <a href="signup.php" class="btn btn-signup">Get Started</a>
                 <a href="#features" class="btn btn-login">Learn More</a>
             </div>
         </div>
@@ -148,8 +148,8 @@
             <h2>Ready to Get Started?</h2>
             <p>Join thousands of satisfied users who trust our healthcare system</p>
             <div class="cta-buttons">
-                <a href="Login Page/signup.html" class="btn btn-signup">Create Account</a>
-                <a href="Login Page/login.html" class="btn btn-login">Login Now</a>
+                <a href="signup.php" class="btn btn-signup">Create Account</a>
+                <a href="login.php" class="btn btn-login">Login Now</a>
             </div>
         </div>
     </section>

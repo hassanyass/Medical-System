@@ -1,3 +1,21 @@
+<?php
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    include '../con.php';
+    if(!empty($_SESSION["user_id1"])){
+    $user_id = $_SESSION["user_id1"];
+    $select = mysqli_query($con, "SELECT * FROM `admin` WHERE admin_id = '$user_id'") or die('query failed');
+
+        if (mysqli_num_rows($select) > 0)
+        {
+            $fetch = mysqli_fetch_assoc($select);
+        }
+    }
+    else{
+    header("Location: ../login.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,9 +23,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    <link rel="stylesheet" href="../dashboardStyle.css">
+    <link rel="stylesheet" href="dashboardStyle.css">
     <script src="adminScript.js" defer></script>
-    <script src="logout.js" defer></script>
+    <!-- <script src="logout.js" defer></script> -->
 </head>
 
 <body>
@@ -28,10 +46,10 @@
         <div class="sidebar-main">
             <div class="sidebar-doctor">
                 <div class="doctor-profile">
-                    <img src="../img/admin.jpg" alt="admin">
+                    <img src="img/admin.jpg" alt="admin">
                     <div class="doctor-info">
-                        <h2>Admin Panel</h2>
-                        <p>admin@medicalsystem.com</p>
+                        <h2><?php echo $fetch["admin_name"] ?></h2>
+                        <p><?php echo $fetch["email"] ?></p>
                     </div>
                 </div>
             </div>
@@ -180,7 +198,7 @@
                         <tbody>
                             <tr>
                                 <td class="patient-info">
-                                    <img src="../img/doctor.jpg" alt="doctor">
+                                    <img src="img/doctor.jpg" alt="doctor">
                                     <div>
                                         <h4>Dr. Hassan Yassin</h4>
                                         <small>ID: D-0001</small>
@@ -205,7 +223,7 @@
                             </tr>
                             <tr>
                                 <td class="patient-info">
-                                    <img src="../img/doctor2.jpg" alt="doctor">
+                                    <img src="img/doctor2.jpg" alt="doctor">
                                     <div>
                                         <h4>Dr. Sarah Johnson</h4>
                                         <small>ID: D-0002</small>

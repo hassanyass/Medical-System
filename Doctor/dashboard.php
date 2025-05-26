@@ -1,3 +1,21 @@
+<?php
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    include '../con.php';
+    if(!empty($_SESSION["user_id2"])){
+    $user_id = $_SESSION["user_id2"];
+    $select = mysqli_query($con, "SELECT * FROM `doctor` WHERE doctor_id = '$user_id'") or die('query failed');
+
+        if (mysqli_num_rows($select) > 0)
+        {
+            $fetch = mysqli_fetch_assoc($select);
+        }
+    }
+    else{
+    header("Location: ../login.php");
+    }
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -7,7 +25,7 @@
     <title>Doctor Dashboard</title>
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="dashboardStyle.css">
-    <script src="dashboardScript.js" defer></script>
+    <!-- <script src="dashboardScript.js" defer></script> -->
 </head>
 
 <body>
@@ -27,8 +45,8 @@
                 <div class="doctor-profile">
                     <img src="img/doctor.jpg" alt="doctor">
                     <div class="doctor-info">
-                        <h2>Hassan Yassin</h2>
-                        <p>doc.hassanyassin@gmail.com</p>
+                        <h2><?php echo $fetch["doctor_name"] ?></h2>
+                        <p><?php echo $fetch["email"] ?></p>
                     </div>
                 </div>
             </div>
@@ -63,7 +81,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" id="logoutBtn">
+                            <a href="../logout.php" id="logoutBtn">
                                 <span class="las la-sign-out-alt"></span>
                                 <span>Logout</span>
                             </a>
