@@ -16,6 +16,79 @@
     }
 ?>
 
+<?php
+    $doctor_count_query = mysqli_query($con, "SELECT COUNT(*) AS total_doctors FROM doctor");
+    $doctor_data = mysqli_fetch_assoc($doctor_count_query);
+    $total_doctors = $doctor_data['total_doctors'];
+?>
+
+<?php
+    if (isset($_POST['submit'])) {
+        $name = mysqli_real_escape_string($con, $_POST['name']);
+        $email = mysqli_real_escape_string($con, $_POST['email']);
+        $phone = mysqli_real_escape_string($con, $_POST['phone']);
+        $specialty = mysqli_real_escape_string($con, $_POST['specialty']);
+        $qualifications = mysqli_real_escape_string($con, $_POST['qualifications']);
+        $address = mysqli_real_escape_string($con, $_POST['address']);
+        $startTime = mysqli_real_escape_string($con, $_POST['startTime']);
+        $endTime = mysqli_real_escape_string($con, $_POST['endTime']);
+        $status = mysqli_real_escape_string($con, $_POST['status']);
+        $user_type = mysqli_real_escape_string($con, $_POST['user_type']);
+        $password = mysqli_real_escape_string($con, md5($_POST['password']));
+        $cpassword = mysqli_real_escape_string($con, md5($_POST['cpassword']));
+
+        $update_image = $_FILES['img']['name'];
+        $update_image_tmp_name = $_FILES['img']['tmp_name'];
+        $update_image_folder = '../profile_pics/doctor_pics/' . $update_image;
+
+        if (is_uploaded_file($update_image_tmp_name)) {
+            if (move_uploaded_file($update_image_tmp_name, $update_image_folder)) {
+                echo "File moved successfully to: $update_image_folder";
+            } else {
+                echo "move_uploaded_file() failed";
+            }
+        } else {
+            echo "Not a valid uploaded file: $update_image_tmp_name";
+        }
+
+
+        if (empty($name) || empty($phone) || empty($email) || empty($_POST['password']) || empty($_POST['cpassword'])) {
+            $message[] = 'All fields are required.';
+        } else {
+            $select = mysqli_query($con, "SELECT * FROM `doctor` WHERE email = '$email'") or die(mysqli_error($con));
+
+            if (mysqli_num_rows($select) > 0) {
+                $message[] = 'User already exists.';
+            } else {
+                if ($password != $cpassword) {
+                    $message[] = 'Confirm password not matched!';
+                } else {
+                    $insert = mysqli_query($con, "INSERT INTO `doctor` (doctor_name, email, doctor_phone, doctor_specialty, doctor_qualifications, 
+                    doctor_clinic_address, from_working_hours, to_working_hours, status, user_type, password, doctor_photo)
+
+                    VALUES ('$name', '$email', '$phone', '$specialty', '$qualifications', 
+                    '$address', '$startTime', '$endTime', '$status', '$user_type', '$password', '$update_image')") 
+                    or die(mysqli_error($con));
+
+                    if ($insert) {
+                        if (move_uploaded_file($update_image_tmp_name, $update_image_folder)) {
+                            $message[] = 'Image uploaded and doctor registered successfully!';
+                            header('location:admin.php');
+                            exit();
+                        } else {
+                            $message[] = 'Doctor registered, but image upload failed!';
+                            header('location:admin.php');
+                            exit();
+                        }
+                    } else {
+                        $message[] = 'Registration failed!';
+                    }
+                }
+            }
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,8 +97,7 @@
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="dashboardStyle.css">
-    <script src="adminScript.js" defer></script>
-    <!-- <script src="logout.js" defer></script> -->
+    <script src="adminScriptt.js" defer></script>
 </head>
 
 <body>
@@ -84,7 +156,7 @@
                             </a>
                         </li>
                         <li class="logout-item">
-                            <a href="#" id="logoutBtn">
+                            <a href="../logout.php" id="logoutBtn">
                                 <span class="las la-sign-out-alt"></span>
                                 <span>Log Out</span>
                             </a>
@@ -136,7 +208,7 @@
                     </div>
                     <div class="card-info">
                         <h2>Total Doctors</h2>
-                        <h3>12</h3>
+                        <h3><?php echo $total_doctors ?></h3>
                         <small>Active doctors in system</small>
                     </div>
                 </div>
@@ -196,56 +268,73 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="patient-info">
-                                    <img src="img/doctor.jpg" alt="doctor">
-                                    <div>
-                                        <h4>Dr. Hassan Yassin</h4>
-                                        <small>ID: D-0001</small>
-                                    </div>
-                                </td>
-                                <td>General Medicine</td>
-                                <td>45 patients</td>
-                                <td><span class="status confirmed">Active</span></td>
-                                <td>
-                                    <div class="action-buttons">
-                                        <button class="action-btn view-btn" title="View Details">
-                                            <span class="las la-eye"></span>
-                                        </button>
-                                        <button class="action-btn edit-btn" title="Edit">
-                                            <span class="las la-edit"></span>
-                                        </button>
-                                        <button class="action-btn delete-btn" title="Remove">
-                                            <span class="las la-trash"></span>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="patient-info">
-                                    <img src="img/doctor2.jpg" alt="doctor">
-                                    <div>
-                                        <h4>Dr. Sarah Johnson</h4>
-                                        <small>ID: D-0002</small>
-                                    </div>
-                                </td>
-                                <td>Pediatrics</td>
-                                <td>38 patients</td>
-                                <td><span class="status confirmed">Active</span></td>
-                                <td>
-                                    <div class="action-buttons">
-                                        <button class="action-btn view-btn" title="View Details">
-                                            <span class="las la-eye"></span>
-                                        </button>
-                                        <button class="action-btn edit-btn" title="Edit">
-                                            <span class="las la-edit"></span>
-                                        </button>
-                                        <button class="action-btn delete-btn" title="Remove">
-                                            <span class="las la-trash"></span>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
+                            <?php
+                                $query_pag_data = "SELECT * FROM doctor
+                                INNER JOIN specialty ON specialty_id = doctor_specialty";
+
+                                $result_pag_data = mysqli_query($con, $query_pag_data);
+
+                                $i = 1;
+
+                                while($row = mysqli_fetch_assoc($result_pag_data))
+                                {
+                                    $doctor_id = $row['doctor_id'];
+                                    $doctor_name = $row['doctor_name'];
+                                    $specialty_name = $row['specialty_name'];
+                                    $status = $row['status'];
+                                    ?>
+                                        <tr>
+                                            <td class="patient-info">
+                                                <img src="img/doctor.jpg" alt="doctor">
+                                                <div>
+                                                    <h4><?php echo "Dr. ", $doctor_name ?></h4>
+                                                    <?php
+                                                        if ($doctor_id < 10)
+                                                        {
+                                                            ?>
+                                                                <small><?php echo "D-000", $doctor_id ?></small>
+                                                            <?php
+                                                        }
+                                                        elseif ($doctor_id >= 10 & $doctor_id < 100)
+                                                        {
+                                                            ?>
+                                                                <small><?php echo "D-00", $doctor_id ?></small>
+                                                            <?php
+                                                        }
+                                                    ?>
+                                                </div>
+                                            </td>
+                                            <td><?php echo $specialty_name ?></td>
+                                            <td>45 patients</td>
+                                            <?php
+                                                if ($status == 1){
+                                                    ?>
+                                                        <td><span class="status confirmed">Active</span></td>
+                                                    <?php
+                                                }
+                                                elseif ($status == 2){
+                                                    ?>
+                                                        <td><span class="status pending">Pending</span></td>
+                                                    <?php
+                                                }
+                                            ?>
+                                            <td>
+                                                <div class="action-buttons">
+                                                    <button class="action-btn view-btn" title="View Details">
+                                                        <span class="las la-eye"></span>
+                                                    </button>
+                                                    <button class="action-btn edit-btn" title="Edit">
+                                                        <span class="las la-edit"></span>
+                                                    </button>
+                                                    <button class="action-btn delete-btn" title="Remove">
+                                                        <span class="las la-trash"></span>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php
+                                }
+                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -258,44 +347,55 @@
                         <h2><span class="las la-user-md"></span> Add New Doctor</h2>
                         <span class="close-modal">&times;</span>
                     </div>
-                    <form id="addDoctorForm" class="modal-form">
+                    <form id="addDoctorForm" method="post" enctype="multipart/form-data" class="modal-form">
                         <div class="form-grid">
                             <div class="form-group">
                                 <label for="doctorName">Full Name</label>
-                                <input type="text" id="doctorName" name="name" placeholder="Enter doctor's full name" required>
+                                <input type="text" name="name" placeholder="Enter doctor's full name" required>
+                            </div>
+                            <div class="form-group" hidden>
+                                <input type="text" name="password" value="123" required>
+                                <input type="text" name="cpassword" value="123" required>
+                                <input type="text" name="user_type" value="2" required>
+                                <input type="text" name="status" value="1" required>
                             </div>
                             <div class="form-group">
                                 <label for="doctorEmail">Email</label>
-                                <input type="email" id="doctorEmail" name="email" placeholder="Enter doctor's email" required>
+                                <input type="email" name="email" placeholder="Enter doctor's email" required>
                             </div>
                             <div class="form-group">
                                 <label for="doctorPhone">Phone Number</label>
-                                <input type="tel" id="doctorPhone" name="phone" placeholder="Enter phone number" required>
+                                <input type="tel" name="phone" placeholder="Enter phone number" required>
                             </div>
                             <div class="form-group">
-                                <label for="doctorSpecialty">Specialty</label>
-                                <select id="doctorSpecialty" name="specialty" required>
+                                <label>Specialty</label>
+                                <select name="specialty" required>
                                     <option value="">Select Specialty</option>
-                                    <option value="General Medicine">General Medicine</option>
-                                    <option value="Pediatrics">Pediatrics</option>
-                                    <option value="Cardiology">Cardiology</option>
-                                    <option value="Dermatology">Dermatology</option>
-                                    <option value="Neurology">Neurology</option>
-                                    <option value="Orthopedics">Orthopedics</option>
-                                    <option value="Psychiatry">Psychiatry</option>
-                                    <option value="Ophthalmology">Ophthalmology</option>
+
+                                    <?php
+                                        $sql = mysqli_query($con, "SELECT * FROM specialty ORDER BY specialty_id");
+            
+                                        while($row = mysqli_fetch_array($sql))
+                                        {
+                                            ?>
+                                            <option value="<?php echo $row['specialty_id']; ?>">
+                                            <?php echo $row['specialty_name'];?>
+                                            </option>
+                                            <?php
+                                        }
+                                    ?>
                                 </select>
                             </div>
                         </div>
                         <div class="form-full">
                             <div class="form-group">
                                 <label for="doctorQualifications">Qualifications</label>
-                                <textarea id="doctorQualifications" name="qualifications" rows="3" 
+                                <textarea name="qualifications" rows="3" 
                                     placeholder="Enter doctor's qualifications, certifications, and experience" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="doctorAddress">Clinic Address</label>
-                                <textarea id="doctorAddress" name="address" rows="2" 
+                                <textarea name="address" rows="2" 
                                     placeholder="Enter clinic/practice address" required></textarea>
                             </div>
                             <div class="form-group">
@@ -309,8 +409,8 @@
                             <div class="form-group">
                                 <label for="doctorImage">Profile Image</label>
                                 <div class="image-upload">
-                                    <input type="file" id="doctorImage" name="image" accept="image/*">
-                                    <img id="imagePreview" src="" alt="Preview" style="display: none;">
+                                    <input type="file" id="doctorImage" name="img" accept="image/*">
+                                    <img id="imagePreview" name="img" src="" alt="Preview" style="display: none;">
                                     <label for="doctorImage" class="upload-label">
                                         <span class="las la-cloud-upload-alt"></span>
                                         Choose Image
@@ -319,7 +419,7 @@
                             </div>
                         </div>
                         <div class="form-actions">
-                            <button type="submit" class="btn-primary">
+                            <button type="submit" name="submit" class="btn-primary">
                                 <span class="las la-save"></span> Add Doctor
                             </button>
                             <button type="button" class="btn-secondary close-modal">
