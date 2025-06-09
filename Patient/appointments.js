@@ -272,7 +272,7 @@ function handleReschedule() {
     if (!state.selectedAppointment) return;
     
     // Redirect to the findDoctors page
-    window.location.href = 'findDoctors.html';
+    window.location.href = 'finddoctors.php';
 }
 
 // Handle cancel appointment

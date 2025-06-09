@@ -39,7 +39,7 @@ form.addEventListener('submit', (e) => {
         if(errors.length === 0) {
             // Check for special users first
             if(email_input.value === "admin@admin.com" && password_input.value === "admin") {
-                window.location.href = "../Doctor and Admin/admin/admin.html";
+                window.location.href = "../Doctor and Admin/admin/admin.php";
                 return;
             }
             

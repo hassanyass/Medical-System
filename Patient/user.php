@@ -37,7 +37,7 @@
             </div>
             <ul class="nav-links">
                 <li class="active"><a href="user.html"><i class="fas fa-home"></i> Dashboard</a></li>
-                <li><a href="findDoctors.html"><i class="fas fa-user-md"></i> Find Doctors</a></li>
+                <li><a href="finddoctors.php"><i class="fas fa-user-md"></i> Find Doctors</a></li>
                 <li><a href="appointments.html"><i class="fas fa-calendar-check"></i> My Appointments</a></li>
                 <li><a href="chat.html"><i class="fas fa-comments"></i> Chat</a></li>
                 <li><a href="../logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
@@ -50,7 +50,7 @@
             <section id="dashboard" class="section active">
                 <h2>Dashboard</h2>
                 <div class="quick-actions">
-                    <div class="action-card" onclick="window.location.href='findDoctors.html'">
+                    <div class="action-card" onclick="window.location.href='finddoctors.php'">
                         <i class="fas fa-calendar-plus"></i>
                         <h3>Book Appointment</h3>
                         <p>Schedule a new appointment with a doctor</p>

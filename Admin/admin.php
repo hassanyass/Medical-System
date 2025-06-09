@@ -132,13 +132,13 @@
                     </div>
                     <ul>
                         <li>
-                            <a href="admin.html" class="active">
+                            <a href="admin.php" class="active">
                                 <span class="las la-tachometer-alt"></span>
                                 <span>Dashboard</span>
                             </a>
                         </li>
                         <li>
-                            <a href="doctors.html">
+                            <a href="doctors.php">
                                 <span class="las la-user-md"></span>
                                 <span>Manage Doctors</span>
                             </a>
@@ -251,7 +251,7 @@
             <div class="recent-appointments">
                 <div class="section-header">
                     <h2>Doctor Management</h2>
-                    <a href="doctors.html" class="view-all">
+                    <a href="doctors.php" class="view-all">
                         <span class="las la-angle-right"></span>
                         View All Doctors
                     </a>
@@ -282,11 +282,11 @@
                                     $doctor_name = $row['doctor_name'];
                                     $specialty_name = $row['specialty_name'];
                                     $status = $row['status'];
+                                    $doctor_photo = $row['doctor_photo'];
                                     ?>
                                         <tr>
                                             <td class="patient-info">
-                                                <img src="img/doctor.jpg" alt="doctor">
-                                                <div>
+                                                    <img src="<?php echo !empty($doctor_photo) ? "../profile_pics/doctor_pics/$doctor_photo" : 'img/doctor.jpg'; ?>" alt="doctor">                                                <div>
                                                     <h4><?php echo "Dr. ", $doctor_name ?></h4>
                                                     <?php
                                                         if ($doctor_id < 10)
