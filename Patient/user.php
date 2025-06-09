@@ -36,9 +36,9 @@
                 <h3 id="userName"><?php echo "Welcome, ", $fetch["patient_name"] ?></h3>
             </div>
             <ul class="nav-links">
-                <li class="active"><a href="user.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li class="active"><a href="user.php"><i class="fas fa-home"></i> Dashboard</a></li>
                 <li><a href="finddoctors.php"><i class="fas fa-user-md"></i> Find Doctors</a></li>
-                <li><a href="appointments.html"><i class="fas fa-calendar-check"></i> My Appointments</a></li>
+                <li><a href="appointments.php"><i class="fas fa-calendar-check"></i> My Appointments</a></li>
                 <li><a href="chat.html"><i class="fas fa-comments"></i> Chat</a></li>
                 <li><a href="../logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
             </ul>
@@ -55,7 +55,7 @@
                         <h3>Book Appointment</h3>
                         <p>Schedule a new appointment with a doctor</p>
                     </div>
-                    <div class="action-card" onclick="window.location.href='appointments.html'">
+                    <div class="action-card" onclick="window.location.href='appointments.php'">
                         <i class="fas fa-history"></i>
                         <h3>Appointment History</h3>
                         <p>View your past appointments</p>

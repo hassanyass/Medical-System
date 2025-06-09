@@ -29,7 +29,7 @@ form.addEventListener('submit', (e) => {
             localStorage.setItem('users', JSON.stringify(users));
             
             // Redirect to user page
-            window.location.href = "../User/user.html";
+            window.location.href = "../User/user.php";
         }
     }
     else{
@@ -52,7 +52,7 @@ form.addEventListener('submit', (e) => {
             const user = users.find(user => user.email === email_input.value && user.password === password_input.value);
             
             if(user) {
-                window.location.href = "../User/user.html";
+                window.location.href = "../User/user.php";
             } else {
                 errors.push("Invalid email or password");
                 email_input.parentElement.classList.add('incorrect');
