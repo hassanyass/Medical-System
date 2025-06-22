@@ -44,7 +44,7 @@ form.addEventListener('submit', (e) => {
             }
             
             if(email_input.value === "doctor@doctor.com" && password_input.value === "doctor") {
-                window.location.href = "../Doctor and Admin/dashboard.html";
+                window.location.href = "../Doctor and Admin/dashboard.php";
                 return;
             }
             

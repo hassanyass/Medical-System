@@ -111,7 +111,7 @@ class DashboardManager {
         if (viewAllLink) {
             viewAllLink.addEventListener('click', (e) => {
                 e.preventDefault();
-                window.location.href = 'doctorAppointment.html';
+                window.location.href = 'doctorAppointment.php';
             });
         }
 
@@ -205,7 +205,7 @@ class DashboardManager {
         }));
 
         // Redirect to appointment details page
-        window.location.href = 'doctorAppointment.html';
+        window.location.href = 'doctorAppointment.php';
     }
 
     closeModal(modal) {

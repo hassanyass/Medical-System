@@ -228,6 +228,11 @@
                         <span class="las la-user-plus"></span>
                         Add New Doctor
                     </button>
+                    <form method="post" action="export_doctors.php" style="display:inline;">
+                        <button type="submit" class="btn-primary" style="margin-left: 10px;">
+                            <span class="las la-file-excel"></span> Export to Excel
+                        </button>
+                    </form>
                 </div>
             </div>
 
